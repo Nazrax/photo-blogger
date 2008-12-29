@@ -1,0 +1,34 @@
+<h1>Listing pictures</h1>
+
+<table>
+  <tr>
+    <th>Parent</th>
+    <th>Content type</th>
+    <th>Filename</th>
+    <th>Thumbnail</th>
+    <th>Size</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Post</th>
+  </tr>
+
+<% for picture in @pictures %>
+  <tr>
+    <td><%=h picture.parent %></td>
+    <td><%=h picture.content_type %></td>
+    <td><%=h picture.filename %></td>
+    <td><%=h picture.thumbnail %></td>
+    <td><%=h picture.size %></td>
+    <td><%=h picture.width %></td>
+    <td><%=h picture.height %></td>
+    <td><%=h picture.post %></td>
+    <td><%= link_to 'Show', picture %></td>
+    <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+    <td><%= link_to 'Destroy', picture, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New picture', new_picture_path %>
