@@ -4,3 +4,6 @@
 [submodule "vendor/plugins/recaptcha"]
 	path = vendor/plugins/recaptcha
 	url = http://github.com/ambethia/recaptcha.git
+[submodule "vendor/plugins/attachment_fu"]
+	path = vendor/plugins/attachment_fu
+	url = http://github.com/technoweenie/attachment_fu.git
