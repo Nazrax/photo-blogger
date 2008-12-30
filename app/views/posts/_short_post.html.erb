@@ -1,0 +1,14 @@
+<div class="post">
+ <div class="post_title">
+  <%= link_to h(post.title), post %>
+ </div>
+ <div class="post_body">
+  <%= h post.text %>
+ </div>
+ <hr>
+ <%=h post.created_at %>
+ <br/>
+ <%= link_to 'Edit', edit_post_path(post) %><br/>
+ <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+</div>
+
