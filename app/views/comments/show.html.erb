@@ -1,0 +1,23 @@
+<p>
+  <b>Commentable type:</b>
+  <%=h @comment.commentable_type %>
+</p>
+
+<p>
+  <b>Commentable:</b>
+  <%=h @comment.commentable %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @comment.content %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%=h @comment.author %>
+</p>
+
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>
