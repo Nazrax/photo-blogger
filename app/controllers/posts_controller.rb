@@ -87,21 +87,24 @@ class PostsController < ApplicationController
   protected
 
   def process_file_uploads
-    for record in params[:picture]
-      id = record[:picture_id]
-      
-      if id #update
-        picture = Picture.find(id)
-        if params["picture_delete_#{id}"] == '1'
-          puts "Deleting picture #{id}"
+    if params[:picture]
+      params[:picture].each do |picture_id, values|
+        picture = Picture.find(picture_id)
+        if values['delete'] == '1'
           picture.destroy
         else
-          if picture.caption != record[:caption]
-            picture.update_attribute :caption, record[:caption]
+          if picture.caption != values[:caption]
+            picture.update_attribute :caption, values[:caption]
           end
         end
-      elsif record[:uploaded_data] != ''  # new picture
-        @post.pictures.create(:caption => record[:caption], :uploaded_data => record[:uploaded_data])
+      end
+    end
+
+    if params[:newpicture]
+      params[:newpicture].each do |values|
+        if values[:uploaded_data] != ''  # new picture
+          @post.pictures.create(:caption => values[:caption], :uploaded_data => values[:uploaded_data])
+        end
       end
     end
   end

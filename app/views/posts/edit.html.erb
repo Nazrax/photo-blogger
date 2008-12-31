@@ -10,18 +10,16 @@
     <% next if picture.parent_id %>
     <% fields_for(picture) do |p| -%>
      <tr>
-      <%= hidden_field_tag 'picture[][picture_id]', picture.id %>
-      <%= hidden_field_tag 'picture[][uploaded_data]', '' %>
       <td><%= image_tag(picture.public_filename(:thumb)) %></td>
-      <td><%= p.text_field :caption, :index => '' %></td>
-      <td><%= check_box_tag "picture_delete_#{picture.id}" %></td>
+      <td><%= p.text_field :caption, :index => picture.id %></td>
+      <td><%= check_box_tag "picture[#{picture.id}][delete]" %></td>
      </tr>
     <% end %>
   <% end %>
 
-  <% fields_for(:picture) do |p| -%>
+  <% fields_for(:newpicture) do |p| -%>
     <% 1.upto(10) do %>
-     <%= hidden_field_tag 'picture[][id]', '' %>
+     <%= hidden_field_tag 'newpicture[][id]', '' %>
      <tr>
       <td><label for="file">File:</label></td>
       <td><%= p.file_field :uploaded_data, :index => '' %></td>
