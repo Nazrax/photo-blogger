@@ -1,0 +1,26 @@
+Photo Blogger
+
+My wife and I take lots of pictures and we wanted some way to share
+our pictures with our friends. Unfortunately, nothing available really
+met our needs. We wanted a blog, not a simple gallery, but most of the
+blogs out there are designed for lots of text and a picture or two,
+not for a little text with lots of pictures. PHP Blogger
+(www.phpblogger.com) came the closest, but it still didn't meet our
+needs. So, I decided to write my own.
+
+Goals:
+- Easy to add and manage posts
+- Attractive slideshow-style image display
+- S3 storage support
+- A spam-proof (or at least resistant) comment system
+
+
+Dependencies:
+- rspec-rails
+- RedCloth
+- ImageScience
+
+
+Configuration:
+Find all of the foo.conf.sample files, copy them to foo.conf, and
+alter as needed; then run the DB migrations.
