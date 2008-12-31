@@ -41,6 +41,7 @@ class PicturesController < ApplicationController
   # POST /pictures.xml
   def create
     @picture = Picture.new(params[:picture])
+    @picture.post_id = params[:post_id]
 
     respond_to do |format|
       if @picture.save

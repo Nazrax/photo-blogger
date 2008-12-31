@@ -61,6 +61,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
+        process_file_uploads
         flash[:notice] = 'Post was successfully updated.'
         format.html { redirect_to(@post) }
         format.xml  { head :ok }
@@ -80,6 +81,28 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(posts_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  protected
+
+  def process_file_uploads
+    for record in params[:picture]
+      id = record[:picture_id]
+      
+      if id #update
+        picture = Picture.find(id)
+        if params["picture_delete_#{id}"] == '1'
+          puts "Deleting picture #{id}"
+          picture.destroy
+        else
+          if picture.caption != record[:caption]
+            picture.update_attribute :caption, record[:caption]
+          end
+        end
+      elsif record[:uploaded_data] != ''  # new picture
+        @post.pictures.create(:caption => record[:caption], :uploaded_data => record[:uploaded_data])
+      end
     end
   end
 end

@@ -1,18 +1,22 @@
-<p>
-  <b>Text:</b>
-  <%=h @post.text %>
-</p>
-
-<p>
-  <b>Picture:</b>
-  <%=h @post.picture_id %>
-</p>
-
-<p>
-  <b>Created at:</b>
+<div class="show_post">
+ <div class="title">
+  <%=h @post.title %>
+ </div>
+ <p>
   <%=h @post.created_at %>
-</p>
+ </p>
 
+ <table>
+ <% for picture in @post.pictures %>
+  <tr><td><%= image_tag(picture.public_filename) %></td></tr>
+  <tr><td><%= h picture.caption %></td></tr>
+ <% end %>
+ </table>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+ <p>
+  <%=textilize(h @post.content) %>
+ </p>
+
+ <%= link_to 'Edit', edit_post_path(@post) %> |
+ <%= link_to 'Index', root_path %>
+</div>
