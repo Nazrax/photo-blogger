@@ -96,6 +96,9 @@ class PostsController < ApplicationController
           if picture.caption != values[:caption]
             picture.update_attribute :caption, values[:caption]
           end
+          if picture.position != values[:position]
+            picture.update_attribute :position, values[:position]
+          end
         end
       end
     end
@@ -103,9 +106,15 @@ class PostsController < ApplicationController
     if params[:newpicture]
       params[:newpicture].each do |values|
         if values[:uploaded_data] != ''  # new picture
-          @post.pictures.create(:caption => values[:caption], :uploaded_data => values[:uploaded_data])
+          @post.pictures.create(:caption => values[:caption], :uploaded_data => values[:uploaded_data], :position => values[:position])
         end
       end
+    end
+
+    1.upto(@post.pictures.size) do |i|
+      picture = @post.pictures[i-1]
+      position = i * 10
+      picture.update_attribute(:position, position) if picture.position != position
     end
   end
 end

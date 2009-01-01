@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  has_many :pictures, :dependent => :destroy
+  has_many :pictures, :dependent => :destroy, :order => 'position'
   has_many :comments, :as => 'commentable'
   belongs_to :picture
   

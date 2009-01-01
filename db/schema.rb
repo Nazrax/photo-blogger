@@ -20,23 +20,6 @@ ActiveRecord::Schema.define(:version => 20081231213320) do
     t.datetime "updated_at"
   end
 
-  create_table "pictures", :force => true do |t|
-    t.integer  "post_id"
-    t.string   "caption"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "parent_id"
-    t.string   "content_type"
-    t.string   "filename"
-    t.string   "thumbnail"
-    t.integer  "size"
-    t.integer  "width"
-    t.integer  "height"
-  end
-
-  add_index "pictures", ["parent_id"], :name => "index_pictures_on_parent_id"
-  add_index "pictures", ["post_id"], :name => "index_pictures_on_post_id"
-
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "content"

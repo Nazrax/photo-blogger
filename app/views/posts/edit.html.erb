@@ -12,6 +12,7 @@
      <tr>
       <td><%= image_tag(picture.public_filename(:thumb)) %></td>
       <td><%= p.text_field :caption, :index => picture.id %></td>
+      <td><%= p.text_field :position, :size => 5, :index => picture.id %></td>
       <td><%= check_box_tag "picture[#{picture.id}][delete]" %></td>
      </tr>
     <% end %>
@@ -21,12 +22,16 @@
     <% 1.upto(10) do %>
      <%= hidden_field_tag 'newpicture[][id]', '' %>
      <tr>
-      <td><label for="file">File:</label></td>
+      <td><%= p.label :file %></td>
       <td><%= p.file_field :uploaded_data, :index => '' %></td>
      </tr>
      <tr>
-      <td><label for="caption">Caption:</label></td>
+      <td><%= p.label :caption %></td>
       <td><%= p.text_field :caption, :index => '' %></td>
+     </tr>
+     <tr>
+       <td><%= p.label :order %></td>
+       <td><%= p.text_field :position, :size => 5, :index => '' %></td>
      </tr>
     <% end %>
   <% end %>

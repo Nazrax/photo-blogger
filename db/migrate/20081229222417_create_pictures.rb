@@ -4,7 +4,7 @@ class CreatePictures < ActiveRecord::Migration
       # Actual model stuff
       t.references :post
       t.string :caption
-
+      t.integer :position
       t.timestamps
 
       # Attachment_fu stuff
