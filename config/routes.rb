@@ -1,8 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :comments
-
   map.resources :posts do |posts|
     posts.resources :pictures
+    posts.resources :comments
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

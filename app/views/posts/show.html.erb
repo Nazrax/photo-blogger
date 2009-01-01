@@ -17,6 +17,18 @@
   <%=textilize(h @post.content) %>
  </p>
 
+ <ul>
+  <%= render :partial => 'comment', :collection => @post.comments %>
+ </ul>
+
+ <% form_for(:comment, :url => post_comments_path(@post)) do |f| -%>
+   New Comment<br/>
+   <%= f.label :author %>: <%= f.text_field :author %><br/>
+   <%= f.label :comment%><br/>
+   <%= f.text_area :content, :cols => 60, :rows => 4 %><br/>
+   <%= f.submit "Submit" %>
+ <% end %>
+
  <%= link_to 'Edit', edit_post_path(@post) %> |
  <%= link_to 'Index', root_path %>
 </div>

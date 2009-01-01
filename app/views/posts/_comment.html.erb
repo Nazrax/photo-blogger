@@ -1,0 +1,8 @@
+<li>
+ <b><%= h comment.author %></b> (<%= time_since(comment.created_at) %>): <%= textilize(h(comment.content)) %>
+ <% if comment.comments.size > 0 %>
+  <ul>
+   <%= render :partial => 'comment', :collection => comment.comments %>
+  </ul>
+ <% end %>
+</li>
