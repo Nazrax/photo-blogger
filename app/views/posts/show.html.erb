@@ -26,6 +26,7 @@
    <%= f.label :author %>: <%= f.text_field :author %><br/>
    <%= f.label :comment%><br/>
    <%= f.text_area :content, :cols => 60, :rows => 4 %><br/>
+   <%= recaptcha_tags %>
    <%= f.submit "Submit" %>
  <% end %>
 

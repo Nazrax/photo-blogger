@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
     @comment.commentable = @post
 
     respond_to do |format|
-      if @comment.save
+      if verify_recaptcha(@comment) && @comment.save
         flash[:notice] = 'Comment was successfully created.'
         format.html { redirect_to(@post) }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
