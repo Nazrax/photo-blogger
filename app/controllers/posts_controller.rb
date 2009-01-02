@@ -58,7 +58,6 @@ class PostsController < ApplicationController
   # PUT /posts/1.xml
   def update
     @post = Post.find(params[:id])
-
     respond_to do |format|
       if @post.update_attributes(params[:post])
         process_file_uploads

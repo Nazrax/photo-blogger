@@ -1,14 +1,20 @@
 <div class="index_post">
+ <% if post.picture %>
+  <div class="post_thumb">
+   <%= image_tag post.picture.public_filename(:thumb) %>
+  </div>
+ <% end %>
+  
  <div class="post_title">
   <%= link_to h(post.title), post %>
  </div>
  <div class="post_content">
   <%= h post.content %>
  </div>
- <hr>
  <%=h post.created_at %>
  <br/>
  <%= link_to 'Edit', edit_post_path(post) %><br/>
  <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+ <hr>
 </div>
 

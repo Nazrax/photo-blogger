@@ -5,6 +5,7 @@
   <%= render :partial => 'form', :locals => {:f => f} %>
 
 <hr/>
+  No thumbnail: <%= f.radio_button :picture_id, nil %>
   <table>
   <% for picture in @post.pictures %>
     <% next if picture.parent_id %>
@@ -14,6 +15,7 @@
       <td><%= p.text_field :caption, :index => picture.id %></td>
       <td><%= p.text_field :position, :size => 5, :index => picture.id %></td>
       <td><%= check_box_tag "picture[#{picture.id}][delete]" %></td>
+      <td><%= f.radio_button :picture_id, picture.id %></td>
      </tr>
     <% end %>
   <% end %>
